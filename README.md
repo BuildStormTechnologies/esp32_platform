@@ -1,2 +1,2 @@
 # esp32_platform
-ESP32 platform demos
+ESP32 AWS IOT platform demos
