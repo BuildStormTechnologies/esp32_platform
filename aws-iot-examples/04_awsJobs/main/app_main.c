@@ -130,6 +130,8 @@ void app_task(void *param)
 {
     uint32_t nextMsgTime_u32 = 0;
 
+    SYSTEM_start();
+	
     while (1)
     {
         switch (SYSTEM_getMode())
@@ -174,6 +176,8 @@ void app_main()
         .pLogLevels_e = gDefaultLogLevels_ae,
         .logModulesCount_u8 = MODULES_MAX,
         .systemEventCallBack = app_eventsCallBackHandler,
+        .pDeviceNamePrefixStr = DEVICE_NAME_PREFIX,
+        .pLicenseIdStr = LICENSE_ID,
 
         .pWifiSsidStr = TEST_WIFI_SSID,
         .pWifiPwdStr = TEST_WIFI_PASSWORD,

@@ -50,7 +50,6 @@ void app_eventsCallBackHandler(systemEvents_et eventId)
 
 void app_task(void *param)
 {
-    SYSTEM_start();
     mqttMsg_st pubMsg = {0};
     mqttMsg_st subMsg = {0};
 
@@ -121,6 +120,8 @@ void app_main()
 
     if (initSuccess)
     {
+    	SYSTEM_start();
+	
         // subscribe to a topic
         AWS_subscribe("testSub/ESP32", QOS0_AT_MOST_ONCE);
 
@@ -133,9 +134,6 @@ void app_main()
     else
     {
         print_error("\n\rError SYSTEM_init");
-        print_error("\n\rError SYSTEM_init");
-        print_error("\n\rError SYSTEM_init");
-        print_error("\n\rError SYSTEM_init\r\n\r\n\r\n\r\n");
         
     }
 }

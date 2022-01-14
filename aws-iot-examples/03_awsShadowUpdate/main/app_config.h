@@ -80,7 +80,7 @@ typedef enum
 
 //-------------------------APP CONFIG--------------------------/
 
-#define DEVICE_NAME_PREFIX "pid"
+#define DEVICE_NAME_PREFIX "esp32"
 
 #define TASK_APP_PRIORITY 4
 #define TASK_APP_STACK_SIZE (5 * 1024) // reduce it to 4096

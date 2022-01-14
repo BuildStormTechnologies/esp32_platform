@@ -1,5 +1,7 @@
 #include <string.h>
 #include "lib_system.h"
+#include "lib_delay.h"
+#include "lib_print.h"
 #include "stdutils.h"
 #include "app_config.h"
 
@@ -115,6 +117,8 @@ void app_main()
         .pLogLevels_e = gDefaultLogLevels_ae,
         .logModulesCount_u8 = MODULES_MAX,
         .systemEventCallBack = app_eventsCallBackHandler,
+        .pDeviceNamePrefixStr = DEVICE_NAME_PREFIX,
+        .pLicenseIdStr = LICENSE_ID,
 
         .pWifiSsidStr = TEST_WIFI_SSID,
         .pWifiPwdStr = TEST_WIFI_PASSWORD,
@@ -134,6 +138,7 @@ void app_main()
 
     if (initSuccess)
     {
+        SYSTEM_start();
         if (pdFALSE == xTaskCreate(&app_task, "app_task", TASK_APP_STACK_SIZE, NULL, TASK_APP_PRIORITY, NULL))
         {
             print_error("\n Error creating app_task \n restarting system\r\n\r\n");

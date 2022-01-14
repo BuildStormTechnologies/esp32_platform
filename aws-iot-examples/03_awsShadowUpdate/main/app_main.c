@@ -70,7 +70,7 @@ void app_publishDeviceStatus()
 void app_task(void *param)
 {
     uint32_t nextMsgTime_u32 = 0;
-
+	
     if (AWS_getThingName())
     {
         app_publishDeviceStatus();
@@ -134,6 +134,8 @@ void app_main()
         .pLogLevels_e = gDefaultLogLevels_ae,
         .logModulesCount_u8 = MODULES_MAX,
         .systemEventCallBack = app_eventsCallBackHandler,
+        .pDeviceNamePrefixStr = DEVICE_NAME_PREFIX,
+        .pLicenseIdStr = LICENSE_ID,
 
         .pWifiSsidStr = TEST_WIFI_SSID,
         .pWifiPwdStr = TEST_WIFI_PASSWORD,
@@ -153,6 +155,8 @@ void app_main()
 
     if (initSuccess)
     {
+	    SYSTEM_start();
+		
         awsShadow_st ledShadow = {
             .keyStr = STR_SHADOW_KEY_LED,
             .valType_e = SHADOW_VALUE_TYPE_UINT,
