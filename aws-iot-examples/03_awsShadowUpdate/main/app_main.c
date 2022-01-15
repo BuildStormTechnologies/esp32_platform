@@ -1,5 +1,15 @@
 #include <string.h>
+
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
 #include "lib_system.h"
+#include "lib_aws.h"
+#include "lib_jobs.h"
+#include "lib_gpio.h"
+#include "lib_flash.h"
+#include "lib_delay.h"
+#include "lib_print.h"
 #include "stdutils.h"
 #include "app_config.h"
 

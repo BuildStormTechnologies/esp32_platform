@@ -80,15 +80,15 @@ typedef enum
 
 //-------------------------APP CONFIG--------------------------/
 
-#define DEVICE_NAME_PREFIX "pid"
+#define DEVICE_NAME_PREFIX "esp32"
 
 #define TASK_APP_PRIORITY 4
 #define TASK_APP_STACK_SIZE (5 * 1024) // reduce it to 4096
 
 #define TEST_WIFI_SSID "buildstorm"
-#define TEST_WIFI_PASSWORD "+919036234012"
+#define TEST_WIFI_PASSWORD "wifipassword"
 
-#define AWS_IOT_MQTT_HOST "a1kg3xym5mvhon-ats.iot.ap-south-1.amazonaws.com"
+#define AWS_IOT_MQTT_HOST "yourhost-ats.iot.ap-south-1.amazonaws.com"
 #define AWS_IOT_MQTT_PORT 8883
 #define AWS_PROVISION_TEMPLATE_NAME "esp32pf_fleet_prov_template"
 

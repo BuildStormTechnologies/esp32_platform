@@ -86,7 +86,7 @@ typedef enum
 #define TASK_APP_STACK_SIZE (5 * 1024) // reduce it to 4096
 
 #define TEST_WIFI_SSID "buildstorm"
-#define TEST_WIFI_PASSWORD "+919036234012"
+#define TEST_WIFI_PASSWORD "wifipassword"
 #define USE_BLE_FOR_PROVISION FALSE
 
 #if USE_BLE_FOR_PROVISION
@@ -94,12 +94,12 @@ typedef enum
 #else
 #define USE_CLAIM_CERTIFICATES TRUE
 #if USE_CLAIM_CERTIFICATES
-#define AWS_IOT_MQTT_HOST "a1kg3xym5mvhon-ats.iot.ap-south-1.amazonaws.com"
+#define AWS_IOT_MQTT_HOST "yourhost-ats.iot.ap-south-1.amazonaws.com"
 #define AWS_IOT_MQTT_PORT 8883
 #define AWS_PROVISION_TEMPLATE_NAME "esp32pf_fleet_prov_template"
 #else
 #define MY_THING_NAME "saramodem"
-#define AWS_IOT_MQTT_HOST "a1kg3xym5mvhon-ats.iot.ap-south-1.amazonaws.com"
+#define AWS_IOT_MQTT_HOST "yourhost-ats.iot.ap-south-1.amazonaws.com"
 #define AWS_IOT_MQTT_PORT 8883
 #endif // USE_CLAIM_CERTIFICATES
 #endif // USE_BLE_FOR_PROVISION
