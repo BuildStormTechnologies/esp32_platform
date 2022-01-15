@@ -15,10 +15,10 @@
 ## Example Setup
 1. Follow [this article](https://buildstorm.com/blog/aws_iot_provision_by_claim/) to setup AWS and generate provisioning certificates.
 2. Same certificates will be used for all examples
-3. Copy the generated certificates to `..\<example>\main\claimCerts` folder and rename them as follows
+3. Copy the generated certificates to `..\esp32_platform\aws-iot-examples\_Certificates\claimCerts` folder and rename them as follows
    1. `aws-root-ca.pem` 
-   2. `certificate.pem.crt` 
-   3. `private.pem.key` 
+   2. `claim-certificate.pem` 
+   3. `claim-private.pem.key` 
 4. Update the following WiFi and AWS parameters in `app_config.h` of the example
 
 ```
