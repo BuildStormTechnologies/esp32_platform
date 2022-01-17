@@ -17,8 +17,6 @@
 #include "esp_err.h"
 #include "stdutils.h"
 
-// TODO: update the library using new apis. refer esp-idf ota example
-
 typedef enum
 {
     OTA_STATUS_READY,

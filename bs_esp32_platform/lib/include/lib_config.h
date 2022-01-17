@@ -35,7 +35,7 @@ typedef enum
         'n', 'e', 'i', 'd' \
     }
 #define GLOBAL_LOG_LEVEL PRINT_LEVEL_ERROR
-#define LOG_PASS_CODE_STR "[12345678]" // TODO: expose to user ????
+#define LOG_PASS_CODE_STR "[12345678]"
 
 typedef enum
 {

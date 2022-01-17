@@ -93,8 +93,6 @@ typedef enum
 #define AWS_IOT_MQTT_HOST "yourhost-ats.iot.ap-south-1.amazonaws.com"
 #define AWS_IOT_MQTT_PORT 8883
 
-#define LICENSE_ID "789DBD960C9C11ECA2F00A3A843C4FE6" // TODO: remove this demo build
-
 #define SHADWO_KEY_LED0 "LED0"
 #define SHADWO_KEY_LED1 "LED1"
 
@@ -102,5 +100,13 @@ typedef enum
 #define LED1_PIN 12
 
 #define APP_VERSION "1.0.0"
+
+//-------------------------LICENSE CONFIG--------------------------/
+
+/**
+ * @brief This is not required for the Demo Version.
+ * Please contact hello@buildstorm.com to get full Licensed Version
+ */
+#define LICENSE_ID "your-license-code"
 
 #endif

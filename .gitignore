@@ -1,2 +1,5 @@
-.vscode
 build
+.vscode
+*.pem
+*.crt
+*.key
