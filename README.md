@@ -3,11 +3,12 @@
 ## Blogs
 1. [ESP32 – IDF: AWS IoT Device Provision](https://buildstorm.com/blog/esp32-idf-aws-iot-device-provision/)
 2. [ESP32 AWS-IOT OTA library on ESP-IDF](https://buildstorm.com/blog/esp32-aws-iot-ota-library-on-esp-idf/)
+3. [API Reference Guide](https://buildstorm.com/docs/aws_iot_for_esp32/v1.0.0/index.html)
 
 ## Requirements
 
 1. This library uses esp-idf v4.3.1 
-2. [Download](https://dl.espressif.com/dl/esp-idf-tools-setup-online-2.9.exe?) and install the ESP-IDF tools installer for windows, or you may follow the official instructions [here](https://docs.espressif.com/projects/esp-idf/en/v4.2/get-started-cmake/index.html#setting-up-development-environment) for other OS.
+2. [Download](https://dl.espressif.com/dl/esp-idf-tools-setup-online-2.9.exe?) and install the ESP-IDF tools installer for windows, or you may follow the official instructions [here](https://docs.espressif.com/projects/esp-idf/en/v4.3.1/get-started-cmake/index.html#setting-up-development-environment) for other OS.
 3. Python 2.7.10 or later should have been installed by the ESP-IDF Tools installer, if not install it
 
 ---
@@ -34,7 +35,7 @@
 
 ## Building the project
 
-1. Open the `ESP-IDF 4.2 CMD` command prompt
+1. Open the `ESP-IDF 4.3.1 CMD` command prompt
 2. Navigate to `..\<example>` folder
 3. Build Command
     ```sh
