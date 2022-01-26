@@ -2,7 +2,7 @@
 /**********************************************************************************************
                                 ExploreEmbedded
 ****************************************************************************************************
-* File:   stdutils.h
+* File:   lib_utils.h
 * Version: 15.1
 * Author: ExploreEmbedded
 * Website: http://www.exploreembedded.com/wiki

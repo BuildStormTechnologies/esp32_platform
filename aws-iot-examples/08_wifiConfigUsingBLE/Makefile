@@ -3,7 +3,7 @@
 # project subdirectory.
 #
 
-PROJECT_NAME := awsShadowUpdate
+PROJECT_NAME := wifiConfigUsingBle
 
 include $(IDF_PATH)/make/project.mk
 

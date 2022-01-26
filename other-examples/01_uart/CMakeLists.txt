@@ -5,5 +5,4 @@ cmake_minimum_required(VERSION 3.5)
 list(APPEND EXTRA_COMPONENT_DIRS "../../bs_esp32_platform")
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(awsShadowUpdate)
-
+project(uartExample)

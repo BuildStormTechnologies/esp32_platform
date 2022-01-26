@@ -10,24 +10,34 @@
 *               Contains macros for the application
 *******************************************************************************/
 
+/** 
+ * \file lib_config.h
+ * \brief Configuration header file.
+ */
+
 #ifndef _LIB_CONFIG_H_
 #define _LIB_CONFIG_H_
 
 #include "esp_types.h"
-#include "stdutils.h"
+#include "lib_utils.h"
 
-#define LIB_VERSION "1.0.0"
+#define LIB_VERSION "1.1.0"
 
 //---------------------------Debug CONFIG---------------------------/
 
+/**
+ * @enum logLevels_et
+ * @brief Levels of debug messages for printing.
+ */
 typedef enum
 {
-    PRINT_LEVEL_NONE = 0,
-    PRINT_LEVEL_ERROR = 1,
-    PRINT_LEVEL_VERBOSE = 1,
-    PRINT_LEVEL_INFO = 2,
-    PRINT_LEVEL_DEBUG = 3,
-    PRINT_LEVEL_MAX = 4
+    PRINT_LEVEL_NONE = 0,       /*!< Does not print any log messages */
+    PRINT_LEVEL_ERROR = 1,      /*!< Prints Error level log messages alone */
+    PRINT_LEVEL_VERBOSE = 1,    /*!< Prints log messages of both Error & Verbose level */
+    PRINT_LEVEL_DEMO = 2,       /*!< Prints demo logs, used for better logging of demos examples */
+    PRINT_LEVEL_INFO = 3,       /*!< Prints log messages of Error, Verbose & Info level */
+    PRINT_LEVEL_DEBUG = 4,      /*!< Prints log messages of all levels */
+    PRINT_LEVEL_MAX = 5         /*!< Total number of log levels */
 } logLevels_et;
 
 #define LOG_LEVEL_MAPPING  \
@@ -35,8 +45,12 @@ typedef enum
         'n', 'e', 'i', 'd' \
     }
 #define GLOBAL_LOG_LEVEL PRINT_LEVEL_ERROR
-#define LOG_PASS_CODE_STR "[12345678]"
+#define LOG_PASS_CODE_STR "[12345678]" // TODO: expose to user ????
 
+/**
+ * @enum menusLibModule_et
+ * @brief An enum to represent Library modules.
+ */
 typedef enum
 {
     LIB_MODULE_MAIN_MENU,
@@ -52,6 +66,7 @@ typedef enum
     LIB_MODULE_JSON,
     LIB_MODULE_HTTP,
     LIB_MODULE_OTA,
+    LIB_MODULE_UART,
     LIB_MODULE_MAX
 } menusLibModule_et;
 
@@ -125,10 +140,10 @@ typedef enum
 #define BLE_RX_RING_BUFFER_SIZE 3
 
 //-------------------------TASK CONFIG--------------------------/
-#define TASK_SYSTEM_PRIORITY 5
+#define TASK_SYSTEM_PRIORITY 6
 #define TASK_SYSTEM_STACK_SIZE (6 * 1024) // reduce it to 4096
 
-#define TASK_MQTT_PRIORITY 6
+#define TASK_MQTT_PRIORITY 7
 #define TASK_MQTT_STACK_SIZE (6 * 1024) // reduce it to 4096
 
 //------------------------FLASH CONFIG--------------------------------/

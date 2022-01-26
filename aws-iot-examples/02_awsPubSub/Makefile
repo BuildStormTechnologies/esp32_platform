@@ -3,7 +3,7 @@
 # project subdirectory.
 #
 
-PROJECT_NAME := shadowUpdates
+PROJECT_NAME := awsPubSub
 
 include $(IDF_PATH)/make/project.mk
 

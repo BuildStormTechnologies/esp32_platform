@@ -3,7 +3,7 @@
 # project subdirectory.
 #
 
-PROJECT_NAME := awsShadowUpdate
+PROJECT_NAME := awsProvisioningUsingBLE
 
 include $(IDF_PATH)/make/project.mk
 
