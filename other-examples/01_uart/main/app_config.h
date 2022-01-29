@@ -88,9 +88,9 @@ typedef enum
 #define TASK_APP_STACK_SIZE (5 * 1024) // reduce it to 4096
 
 #define TEST_WIFI_SSID "buildstorm"
-#define TEST_WIFI_PASSWORD "+919036234012"
+#define TEST_WIFI_PASSWORD "yourWifiPassword"
 
-#define AWS_IOT_MQTT_HOST "a1kg3xym5mvhon-ats.iot.ap-south-1.amazonaws.com"
+#define AWS_IOT_MQTT_HOST "your-host-ats.iot.ap-south-1.amazonaws.com"
 #define AWS_IOT_MQTT_PORT 8883
 #define AWS_PROVISION_TEMPLATE_NAME "esp32pf_fleet_prov_template"
 
@@ -106,10 +106,10 @@ typedef enum
 
 #define BAUD_RATE_UART_1 115200
 #define PIN_UART_1_TX 12
-#define PIN_UART_1_RX 19
+#define PIN_UART_1_RX 13
 
 #define BAUD_RATE_UART_2 115200
 #define PIN_UART_2_TX 18
-#define PIN_UART_2_RX 13
+#define PIN_UART_2_RX 19
 
 #endif

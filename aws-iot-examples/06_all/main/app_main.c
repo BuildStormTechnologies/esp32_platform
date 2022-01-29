@@ -22,7 +22,7 @@
 #include "lib_flash.h"
 #include "lib_delay.h"
 #include "lib_print.h"
-#include "stdutils.h"
+#include "lib_utils.h"
 
 #include "app_config.h"
 
@@ -372,7 +372,7 @@ void app_task(void *param)
     {
         switch (SYSTEM_getMode())
         {
-        case SYSTEM_MODE_CONFIG:
+        case SYSTEM_MODE_DEVICE_CONFIG:
             app_ledBlink();
             break;
 

@@ -5,8 +5,10 @@
 #include "lib_flash.h"
 #include "lib_delay.h"
 #include "lib_print.h"
-#include "stdutils.h"
+#include "lib_utils.h"
 #include "app_config.h"
+
+/* Macros ------------------------------------------------------------------*/
 
 #define thisModule APP_MODULE_MAIN
 
@@ -51,6 +53,10 @@ void app_eventsCallBackHandler(systemEvents_et eventId)
     }
 }
 
+/**
+ * @brief  This function publishes initial device status.
+ * @retval None
+ */
 void app_publishDeviceStatus()
 {
     awsThingShadow_st as_shadow[3] = {
@@ -77,7 +83,7 @@ void app_task(void *param)
     {
         switch (SYSTEM_getMode())
         {
-        case SYSTEM_MODE_CONFIG:
+        case SYSTEM_MODE_DEVICE_CONFIG:
             if (millis() > nextMsgTime_u32)
             {
                 nextMsgTime_u32 = millis() + 2000;
@@ -114,6 +120,11 @@ void app_task(void *param)
     }
 }
 
+/**
+* @brief    entry point of the project
+* @param    None
+* @return   None
+*/
 void app_main()
 {
     systemInitConfig_st s_sysConfig = {
@@ -121,6 +132,7 @@ void app_main()
         .logModulesCount_u8 = MODULES_MAX,
         .systemEventCallBack = app_eventsCallBackHandler,
         .pDeviceNamePrefixStr = DEVICE_NAME_PREFIX,
+        .pAppVersionStr = APP_VERSION,
         .pLicenseIdStr = LICENSE_ID,
 
         .pWifiSsidStr = TEST_WIFI_SSID,

@@ -3,12 +3,14 @@
 #include "lib_flash.h"
 #include "lib_delay.h"
 #include "lib_print.h"
-#include "stdutils.h"
+#include "lib_utils.h"
+
 #include "app_config.h"
 
 #define thisModule APP_MODULE_MAIN
+#define STR_AWS_TOPIC_PUBLISH "testPub/ESP32"
 
-/* Thing Certificates ---------------------------------------------------------*/
+/* Claim Certificates ---------------------------------------------------------*/
 extern const uint8_t aws_root_ca_pem_start[] asm("_binary_aws_root_ca_pem_start");
 extern const uint8_t claim_certificate_pem_crt_start[] asm("_binary_claim_certificate_pem_crt_start");
 extern const uint8_t claim_private_pem_key_start[] asm("_binary_claim_private_pem_key_start");
@@ -60,7 +62,7 @@ void app_task(void *param)
     {
         switch (SYSTEM_getMode())
         {
-        case SYSTEM_MODE_CONFIG:
+        case SYSTEM_MODE_DEVICE_CONFIG:
             if (millis() > nextMsgTime_u32)
             {
                 nextMsgTime_u32 = millis() + 2000;
@@ -84,7 +86,7 @@ void app_task(void *param)
                 {
                     nextMsgTime_u32 = millis() + 10000;
                     pubMsg.payloadLen_u16 = sprintf(pubMsg.payloadStr, "Hello from device - counter: %d", counter_u8++);
-                    pubMsg.topicLen_u8 = sprintf(pubMsg.topicStr, "testPub/ESP32");
+                    pubMsg.topicLen_u8 = sprintf(pubMsg.topicStr, STR_AWS_TOPIC_PUBLISH);
 
                     AWS_publish(&pubMsg);
                     print_info("  PUB Message =>  topic:%s  payload:%s", pubMsg.topicStr, pubMsg.payloadStr);
@@ -103,6 +105,11 @@ void app_task(void *param)
     }
 }
 
+/**
+* @brief    entry point of the project
+* @param    None
+* @return   None
+*/
 void app_main()
 {
     systemInitConfig_st s_sysConfig = {
@@ -111,7 +118,7 @@ void app_main()
         .systemEventCallBack = app_eventsCallBackHandler,
         .pDeviceNamePrefixStr = DEVICE_NAME_PREFIX,
         .pLicenseIdStr = LICENSE_ID,
-
+        .pAppVersionStr = APP_VERSION,
         .pWifiSsidStr = TEST_WIFI_SSID,
         .pWifiPwdStr = TEST_WIFI_PASSWORD,
 

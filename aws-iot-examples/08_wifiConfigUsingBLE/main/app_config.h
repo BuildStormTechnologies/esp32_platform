@@ -33,7 +33,7 @@ typedef enum
 
 #define LOG_LEVEL_MAPPING  \
     {                      \
-        'n', 'e', 'i', 'd' \
+        'n', 'e', '0', 'i', 'd' \
     }    
 
 typedef enum

@@ -5,7 +5,7 @@
 #include "lib_flash.h"
 #include "lib_delay.h"
 #include "lib_print.h"
-#include "stdutils.h"
+#include "lib_utils.h"
 #include "app_config.h"
 
 #include "lib_json.h"
@@ -141,7 +141,7 @@ void app_task(void *param)
     {
         switch (SYSTEM_getMode())
         {
-        case SYSTEM_MODE_CONFIG:
+        case SYSTEM_MODE_DEVICE_CONFIG:
             if (millis() > nextMsgTime_u32)
             {
                 nextMsgTime_u32 = millis() + 2000;
@@ -182,6 +182,7 @@ void app_main()
         .logModulesCount_u8 = MODULES_MAX,
         .systemEventCallBack = app_eventsCallBackHandler,
         .pDeviceNamePrefixStr = DEVICE_NAME_PREFIX,
+        .pAppVersionStr = APP_VERSION,
         .pLicenseIdStr = LICENSE_ID,
 
         .pWifiSsidStr = TEST_WIFI_SSID,
@@ -198,9 +199,9 @@ void app_main()
     GPIO_pinMode(LED0_PIN, GPIO_MODE_OUTPUT, GPIO_PIN_INTR_DISABLE, NULL);
     GPIO_pinWrite(LED0_PIN, LOW);
 
-    bool initSuccess = SYSTEM_init(&s_sysConfig);
+    SYSTEM_init(&s_sysConfig);
 
-    if (initSuccess)
+    if (SYSTEM_getMode() == SYSTEM_MODE_NORMAL)
     {
         if (JOBS_register("blink", 0, app_jobHandlerLed))
         {

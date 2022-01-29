@@ -33,9 +33,9 @@ typedef enum
 
 #define LOG_LEVEL_MAPPING  \
     {                      \
-        'n', 'e', 'i', 'd' \
+        'n', 'e','0', 'i', 'd' \
     }    
-    
+
 typedef enum
 {
     LIB_MODULE_MAIN_MENU,
@@ -51,6 +51,7 @@ typedef enum
     LIB_MODULE_JSON,
     LIB_MODULE_HTTP,
     LIB_MODULE_OTA,
+     LIB_MODULE_UART,
     LIB_MODULE_MAX
 } menusLibModule_et;
 */
@@ -75,6 +76,7 @@ typedef enum
     PRINT_LEVEL_ERROR, /* LIB_MODULE_JSON       */                                     \
     PRINT_LEVEL_ERROR, /* LIB_MODULE_HTTP       */                                     \
     PRINT_LEVEL_ERROR, /* LIB_MODULE_OTA        */                                     \
+    PRINT_LEVEL_ERROR, /* LIB_MODULE_UART       */                                     \
     PRINT_LEVEL_DEBUG, /* APP_MODULE_MAIN       **Add application modules from here */ \
 };
 
@@ -88,7 +90,7 @@ typedef enum
 #define TEST_WIFI_SSID "buildstorm"
 #define TEST_WIFI_PASSWORD "wifipassword"
 
-#define AWS_IOT_MQTT_HOST "yourhost-ats.iot.ap-south-1.amazonaws.com"
+#define AWS_IOT_MQTT_HOST "your-host-ats.iot.ap-south-1.amazonaws.com"
 #define AWS_IOT_MQTT_PORT 8883
 #define AWS_PROVISION_TEMPLATE_NAME "esp32pf_fleet_prov_template"
 

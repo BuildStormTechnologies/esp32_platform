@@ -31,18 +31,18 @@
  */
 typedef enum
 {
-    PRINT_LEVEL_NONE = 0,       /*!< Does not print any log messages */
-    PRINT_LEVEL_ERROR = 1,      /*!< Prints Error level log messages alone */
-    PRINT_LEVEL_VERBOSE = 1,    /*!< Prints log messages of both Error & Verbose level */
-    PRINT_LEVEL_DEMO = 2,       /*!< Prints demo logs, used for better logging of demos examples */
-    PRINT_LEVEL_INFO = 3,       /*!< Prints log messages of Error, Verbose & Info level */
-    PRINT_LEVEL_DEBUG = 4,      /*!< Prints log messages of all levels */
-    PRINT_LEVEL_MAX = 5         /*!< Total number of log levels */
+    PRINT_LEVEL_NONE = 0,    /*!< Does not print any log messages */
+    PRINT_LEVEL_ERROR = 1,   /*!< Prints Error level log messages alone */
+    PRINT_LEVEL_VERBOSE = 1, /*!< Prints log messages of both Error & Verbose level */
+    PRINT_LEVEL_DEMO = 2,    /*!< Prints demo logs, used for better logging of demos examples */
+    PRINT_LEVEL_INFO = 3,    /*!< Prints log messages of Error, Verbose & Info level */
+    PRINT_LEVEL_DEBUG = 4,   /*!< Prints log messages of all levels */
+    PRINT_LEVEL_MAX = 5      /*!< Total number of log levels */
 } logLevels_et;
 
-#define LOG_LEVEL_MAPPING  \
-    {                      \
-        'n', 'e', 'i', 'd' \
+#define LOG_LEVEL_MAPPING       \
+    {                           \
+        'n', 'e', '0', 'i', 'd' \
     }
 #define GLOBAL_LOG_LEVEL PRINT_LEVEL_ERROR
 #define LOG_PASS_CODE_STR "[12345678]" // TODO: expose to user ????

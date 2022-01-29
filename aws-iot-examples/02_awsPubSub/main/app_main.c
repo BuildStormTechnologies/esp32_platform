@@ -2,10 +2,15 @@
 #include "lib_system.h"
 #include "lib_delay.h"
 #include "lib_print.h"
-#include "stdutils.h"
+#include "lib_utils.h"
+
 #include "app_config.h"
 
+/* Macros ------------------------------------------------------------------*/
+
 #define thisModule APP_MODULE_MAIN
+#define STR_AWS_TOPIC_PUBLISH "testPub/ESP32"
+#define STR_AWS_TOPIC_SUBSCRIBE "testSub/ESP32"
 
 /* Thing Certificates ---------------------------------------------------------*/
 extern const uint8_t aws_root_ca_pem_start[] asm("_binary_aws_root_ca_pem_start");
@@ -60,7 +65,7 @@ void app_task(void *param)
     {
         switch (SYSTEM_getMode())
         {
-        case SYSTEM_MODE_CONFIG:
+        case SYSTEM_MODE_DEVICE_CONFIG:
             break;
 
         case SYSTEM_MODE_NORMAL:
@@ -71,7 +76,7 @@ void app_task(void *param)
                 {
                     nextAwsPublishTime_u32 = millis() + 5000;
                     pubMsg.payloadLen_u16 = sprintf(pubMsg.payloadStr, "Hello from device - counter: %d", counter_u8++);
-                    pubMsg.topicLen_u8 = sprintf(pubMsg.topicStr, "testPub/ESP32");
+                    pubMsg.topicLen_u8 = sprintf(pubMsg.topicStr, STR_AWS_TOPIC_PUBLISH);
 
                     AWS_publish(&pubMsg);
                     print_info("  PUB Message =>  topic:%s  payload:%s", pubMsg.topicStr, pubMsg.payloadStr);
@@ -96,13 +101,19 @@ void app_task(void *param)
     }
 }
 
+/**
+* @brief    entry point of the project
+* @param    None
+* @return   None
+*/
 void app_main()
 {
-    systemInitConfig_st s_sysConfig = {
+    systemInitConfig_st sysConfig = {
         .pLogLevels_e = gDefaultLogLevels_ae,
         .logModulesCount_u8 = MODULES_MAX,
         .systemEventCallBack = app_eventsCallBackHandler,
         .pDeviceNamePrefixStr = DEVICE_NAME_PREFIX,
+        .pAppVersionStr = APP_VERSION,
         .pLicenseIdStr = LICENSE_ID,
 
         .pWifiSsidStr = TEST_WIFI_SSID,
@@ -111,19 +122,19 @@ void app_main()
         .s_awsConfig = {
             .pThingNameStr = MY_THING_NAME,
             .hostNameStr = AWS_IOT_MQTT_HOST,
-            .port_u16 = 8883,
+            .port_u16 = AWS_IOT_MQTT_PORT,
             .pRootCaStr = (char *)aws_root_ca_pem_start,
             .pThingCertStr = (char *)thing_certificate_pem_crt_start,
             .pThingPrivateKeyStr = (char *)thing_private_pem_key_start}};
 
-    bool initSuccess = SYSTEM_init(&s_sysConfig);
+    bool initSuccess = SYSTEM_init(&sysConfig);
 
     if (initSuccess)
     {
     	SYSTEM_start();
 	
         // subscribe to a topic
-        AWS_subscribe("testSub/ESP32", QOS0_AT_MOST_ONCE);
+        AWS_subscribe(STR_AWS_TOPIC_SUBSCRIBE, QOS0_AT_MOST_ONCE);
 
         if (pdFALSE == xTaskCreate(&app_task, "app_task", TASK_APP_STACK_SIZE, NULL, TASK_APP_PRIORITY, NULL))
         {

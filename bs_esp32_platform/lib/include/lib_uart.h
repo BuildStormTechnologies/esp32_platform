@@ -29,7 +29,6 @@ uint16_t UART_available(uartPortNum_et uartPortNum_e);
 bool UART_readByte(uartPortNum_et uartPortNum_e, uint8_t *pBuff_u8);
 uint16_t UART_read(uartPortNum_et uartPortNum_e, uint8_t *pBuff_u8, uint16_t maxLen_u16);
 uint16_t UART_write(uartPortNum_et uartPortNum_e, uint8_t *pBuff_u8, uint16_t len_u16);
-void UART_printf(uartPortNum_et uartPortNum_e, const char *argList, ...);
 
 /**************************************************************************************************/
 
@@ -50,8 +49,6 @@ void UART_printf(uartPortNum_et uartPortNum_e, const char *argList, ...);
 #define UART1_write(pBuff_u8, len_u16) UART_write(UART_PORT_NUM_1, pBuff_u8, len_u16)
 #define UART2_write(pBuff_u8, len_u16) UART_write(UART_PORT_NUM_2, pBuff_u8, len_u16)
 
-#define UART1_printf(var_arg_list...) UART_printf(UART_PORT_NUM_1, var_arg_list)
-#define UART2_printf(var_arg_list...) UART_printf(UART_PORT_NUM_2, var_arg_list)
 
 /****************************************************************************************************/
 #endif

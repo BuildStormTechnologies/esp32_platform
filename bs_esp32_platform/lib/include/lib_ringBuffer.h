@@ -80,6 +80,7 @@ uint16_t RB_hasSpace(rb_st *ps_rb);
  * @retval false on errors
  */
 bool RB_write(rb_st *ps_rb, void *pBuffer);
+uint16_t RB_writeChunk(rb_st *ps_rb, void *pBuffer, uint16_t buffLen_u16);
 
 /**
  * @brief Read data from ring buffer
@@ -90,5 +91,6 @@ bool RB_write(rb_st *ps_rb, void *pBuffer);
  * @retval false on errors
  */
 bool RB_read(rb_st *ps_rb, void *pBuffer);
+uint16_t RB_readChunk(rb_st *ps_rb, void *pBuffer, uint16_t buffLen_u16);
 
 #endif
