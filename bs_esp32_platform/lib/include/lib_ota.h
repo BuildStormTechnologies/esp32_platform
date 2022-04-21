@@ -1,16 +1,6 @@
-/*******************************************************************************
-* Copyright (c) 2021, Buildstorm Pvt Ltd
-*
-* Filename:     lib_ota.h
-*
-* Author:       Amruta
-* email:        amruta@buildstorm.com
-*
-* Description:
-*               Contains wrapper functions to handle OTA functionalities.
-*******************************************************************************/
-
-/** 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_ota.h
  * \brief OTA library header file.
  */
@@ -30,17 +20,17 @@
  */
 typedef enum
 {
-    OTA_STATUS_READY,                   /*!< Ready status */
-    OTA_STATUS_SUCCESS,                 /*!< OTA was successful */
-    OTA_STATUS_GET_PARTITION_FAILED,    /*!< Failed to get partition */
-    OTA_STATUS_BEGIN_FAILED,            /*!< Failed to start OTA  */
-    OTA_STATUS_WRITE_FAILED,            /*!< Failed to write OTA packets */
-    OTA_STATUS_END_FAILED,              /*!< Failed to end OTA process */
-    OTA_STATUS_SET_PARTITION_FAILED,    /*!< Failed to set boot parition after OTA */
-    OTA_STATUS_TIMEDOUT,                /*!< OTA process timedout */
-    OTA_STATUS_DOWNLOAD_FAILED,         /*!< OTA file download failed */
-    OTA_STATUS_FAILED_UNKOWN_REASON,    /*!< OTA failed with unknown error */
-    OTA_STATUS_MAX                      /*!< Total number of OTA status */
+    OTA_STATUS_READY,                /*!< Ready status */
+    OTA_STATUS_SUCCESS,              /*!< OTA was successful */
+    OTA_STATUS_GET_PARTITION_FAILED, /*!< Failed to get partition */
+    OTA_STATUS_BEGIN_FAILED,         /*!< Failed to start OTA  */
+    OTA_STATUS_WRITE_FAILED,         /*!< Failed to write OTA packets */
+    OTA_STATUS_END_FAILED,           /*!< Failed to end OTA process */
+    OTA_STATUS_SET_PARTITION_FAILED, /*!< Failed to set boot parition after OTA */
+    OTA_STATUS_TIMEDOUT,             /*!< OTA process timedout */
+    OTA_STATUS_DOWNLOAD_FAILED,      /*!< OTA file download failed */
+    OTA_STATUS_FAILED_UNKOWN_REASON, /*!< OTA failed with unknown error */
+    OTA_STATUS_MAX                   /*!< Total number of OTA status */
 } flashOtaStatus_et;
 
 /**
@@ -49,10 +39,10 @@ typedef enum
  */
 typedef enum
 {
-    OTA_UPDATE_TYPE_NONE,   /*!< None */
-    OTA_UPDATE_TYPE_LOCAL,  /*!< Perform local update */
-    OTA_UPDATE_TYPE_WEB,    /*!< Perform web update */
-    OTA_UPDATE_TYPE_MAX     /*!< Total number of firmware update types */
+    OTA_UPDATE_TYPE_NONE,  /*!< None */
+    OTA_UPDATE_TYPE_LOCAL, /*!< Perform local update */
+    OTA_UPDATE_TYPE_WEB,   /*!< Perform web update */
+    OTA_UPDATE_TYPE_MAX    /*!< Total number of firmware update types */
 } firmUpdateType_et;
 
 /*---------------------------structures-------------------------------------*/
@@ -62,9 +52,9 @@ typedef enum
  */
 typedef struct
 {
-    esp_err_t error;                /*!< ESP error type */
-    flashOtaStatus_et status_e;     /*!< OTA status */
-    uint8_t previousPartition_u8;   /*!< Previous boot partition */
+    esp_err_t error;              /*!< ESP error type */
+    flashOtaStatus_et status_e;   /*!< OTA status */
+    uint8_t previousPartition_u8; /*!< Previous boot partition */
 } otaStatus_st;
 
 /* Function declarations ----------------------------------------------------*/
@@ -90,7 +80,7 @@ uint8_t OTA_getProgressPercentage();
  * @param none
  * @returns Status to indicate if OTA is in progress
  * @retval true if in progress
- * @retval false if not in progress 
+ * @retval false if not in progress
  */
 bool OTA_inProgress();
 

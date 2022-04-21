@@ -1,7 +1,9 @@
-/** 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_system.h
  * \brief System library header file.
- * 
+ *
  * The system library initialiezes the hardware peripherals required by the
  * system by handling core operations like handling connectivity events
  * for WiFi, BLE, AWS IoT operations, Flash storage operations, printing
@@ -49,7 +51,7 @@
 // check IPV6 support
 // check
 
-/** 
+/**
  * @enum systemMode_et
  * An enum that represents System modes. The system will always be in one of
  * the following mode.
@@ -66,7 +68,7 @@ typedef enum
     SYSTEM_MODE_MAX            /*!< Total number of system modes */
 } systemMode_et;
 
-/** 
+/**
  * @enum systemEvents_et
  * An enum that represents System events. The system notifes the application
  * about these events using a callback of type systemEventCb_t.
@@ -120,6 +122,7 @@ typedef struct
 bool SYSTEM_init(systemInitConfig_st *s_pConfig);
 void SYSTEM_start();
 void SYSTEM_startOta(char *pUrlStr);
+void SYSTEM_startTestMode();
 
 /**
  * @brief Initialize the device for OTA firmware update and put the
@@ -135,7 +138,7 @@ bool SYSTEM_startFirmwareUpdate(firmUpdateType_et e_type, char *pUrlStr);
 /**
  * @brief Start firmware file download.
  * @param [in] pUrlStr URL of file to be downloaded
- * @returns File download started status 
+ * @returns File download started status
  * @retval true on success
  * @retval false on failure
  */

@@ -1,4 +1,6 @@
-/** 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_json.h
  * \brief JSON library header file.
  */
@@ -9,15 +11,15 @@
 #include "lib_utils.h"
 #include "lib_config.h"
 
-#define LENGTH_KEY_SIZE 32 //Max 3-char keyStr ex:"typ", "dat", "cmd", "sts" etc
+#define LENGTH_KEY_SIZE 32 // Max 3-char keyStr ex:"typ", "dat", "cmd", "sts" etc
 
 /**
  * @brief A structure to represent key-value pairs in a JSON string.
  */
 typedef struct
 {
-    char keyStr[LENGTH_KEY_SIZE];   /*!< A key */
-    char *pValueStr;                /*!< Value associated with the key */
+    char keyStr[LENGTH_KEY_SIZE]; /*!< A key */
+    char *pValueStr;              /*!< Value associated with the key */
 } tagStructure_st;
 
 #define MAX_JSON_ARRAY_OBJS 10
@@ -27,8 +29,8 @@ typedef struct
  */
 typedef struct
 {
-    uint8_t numOfJosnObjs_u8;                   /*!< Number of JSON objects in array */
-    char jsonObjs[MAX_JSON_ARRAY_OBJS][150];    /*!< Array of objects */
+    uint8_t numOfJosnObjs_u8;                /*!< Number of JSON objects in array */
+    char jsonObjs[MAX_JSON_ARRAY_OBJS][150]; /*!< Array of objects */
 } jsonArray_st;
 
 /**

@@ -1,4 +1,6 @@
-/** 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_print.h
  * \brief Print library header file.
  */
@@ -59,7 +61,7 @@ void print_enableLogs();
 /**
  * @brief Disable logs
  * @param none
- * @returns none 
+ * @returns none
  */
 void print_disableLogs();
 

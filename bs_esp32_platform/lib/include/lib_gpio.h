@@ -1,16 +1,6 @@
-/*******************************************************************************
-* Copyright (c) 2021, Buildstorm Pvt Ltd
-*
-* Filename:     module_gpio.h
-*
-* Author:       Amruta
-* email:        amruta@buildstorm.com
-*
-* Description:
-*               Contains wrapper functions to handle GPIO functionalities.
-*******************************************************************************/
-
-/** 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_gpio.h
  * \brief GPIO library header file.
  */

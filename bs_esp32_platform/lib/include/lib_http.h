@@ -1,4 +1,7 @@
-/** \file lib_http.h
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
+ * \file lib_http.h
  *  \brief HTTP library header file.
  */
 
@@ -36,25 +39,25 @@ typedef enum
  */
 typedef enum
 {
-    STATE_HTTP_IDLE,                    /*!< HTTP idle state */
-    STATE_HTTP_START,                   /*!< HTTP start state */
-    STATE_HTTP_SET_REQUEST_HEADER,      /*!< Set HTTP request header */
-    STATE_HTTP_SET_RESPONSE_HEADER,     /*!< Set HTTP response header */
-    STATE_HTTP_CONNECT,                 /*!< Initiate connection */
-    STATE_HTTP_SET_URL,                 /*!< Set the URL for HTTP request*/
-    STATE_HTTP_GET_REQUEST,             /*!< HTTP idle state */
-    STATE_HTTP_POST_REQUEST,            /*!< Send HTTP POST request */
-    STATE_HTTP_POST_DATA,               /*!< Send HTTP POST data */
-    STATE_HTTP_WAIT_FOR_POST_RESPONSE,  /*!< Wait for HTTP response */
-    STATE_HTTP_READ,                    /*!< Read HTTP response */
-    STATE_HTTP_WAIT_FOR_FILE_HEADER,    /*!< Wait for HTTP file header */
-    STATE_HTTP_DOWNLOAD_FILE,           /*!< File download in progress */
-    STATE_HTTP_DOWNLOAD_COMPLETE,       /*!< File download completed */
-    STATE_HTTP_RETRY,                   /*!< Retry last operation */
-    STATE_HTTP_TIMEOUT,                 /*!< Timeout occured */
-    STATE_HTTP_FAILED,                  /*!< HTTP operation failed */
-    STATE_HTTP_CLOSE,                   /*!< Close HTTP connection */
-    STATE_HTTP_MAX                      /*!< Total number of HTTP states */
+    STATE_HTTP_IDLE,                   /*!< HTTP idle state */
+    STATE_HTTP_START,                  /*!< HTTP start state */
+    STATE_HTTP_SET_REQUEST_HEADER,     /*!< Set HTTP request header */
+    STATE_HTTP_SET_RESPONSE_HEADER,    /*!< Set HTTP response header */
+    STATE_HTTP_CONNECT,                /*!< Initiate connection */
+    STATE_HTTP_SET_URL,                /*!< Set the URL for HTTP request*/
+    STATE_HTTP_GET_REQUEST,            /*!< HTTP idle state */
+    STATE_HTTP_POST_REQUEST,           /*!< Send HTTP POST request */
+    STATE_HTTP_POST_DATA,              /*!< Send HTTP POST data */
+    STATE_HTTP_WAIT_FOR_POST_RESPONSE, /*!< Wait for HTTP response */
+    STATE_HTTP_READ,                   /*!< Read HTTP response */
+    STATE_HTTP_WAIT_FOR_FILE_HEADER,   /*!< Wait for HTTP file header */
+    STATE_HTTP_DOWNLOAD_FILE,          /*!< File download in progress */
+    STATE_HTTP_DOWNLOAD_COMPLETE,      /*!< File download completed */
+    STATE_HTTP_RETRY,                  /*!< Retry last operation */
+    STATE_HTTP_TIMEOUT,                /*!< Timeout occured */
+    STATE_HTTP_FAILED,                 /*!< HTTP operation failed */
+    STATE_HTTP_CLOSE,                  /*!< Close HTTP connection */
+    STATE_HTTP_MAX                     /*!< Total number of HTTP states */
 } httpStates_et;
 
 /**
@@ -62,11 +65,11 @@ typedef enum
  */
 typedef struct
 {
-    httpReq_et reqType_e;                           /*!< HTTP request type */
-    tagStructure_st as_headers[MAX_HTTP_HEADERS];   /*!< HTTP headers */
-    char *pUrlStr;                                  /*!< HTTP request URL */
-    char *pPayloadStr;                              /*!< HTTP payload as string */
-    bool header_b8;                                 
+    httpReq_et reqType_e;                         /*!< HTTP request type */
+    tagStructure_st as_headers[MAX_HTTP_HEADERS]; /*!< HTTP headers */
+    char *pUrlStr;                                /*!< HTTP request URL */
+    char *pPayloadStr;                            /*!< HTTP payload as string */
+    bool header_b8;
 } httpConfig_st;
 
 /**
@@ -105,7 +108,7 @@ void HTTP_close();
  * @brief Get HTTP state as string
  * @param [in] state_e HTTP state
  * @returns String version of HTTP states @ref httpStates_et
- * 
+ *
  */
 const char *HTTP_getStateString(httpStates_et state_e);
 

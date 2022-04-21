@@ -1,16 +1,6 @@
-/*******************************************************************************
-* Copyright (c) 2021, Buildstorm Pvt Ltd
-*
-* Filename:     lib_wifi.h
-*
-* Author:       Amruta
-* email:        amruta@buildstorm.com
-*
-* Description:
-*               Contains wrapper functions to handle WiFi functionalities.
-*******************************************************************************/
-
 /**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_wifi.h
  * \brief WiFi library header file
  */
@@ -33,12 +23,12 @@
  */
 typedef enum
 {
-    STATE_WIFI_IDLE,            /*!< Idle state */
-    STATE_WIFI_SCAN,            /*!< Scanning for SSIDs */
-    STATE_WIFI_START,           /*!< Start WiFi */
-    STATE_WIFI_DISCONNECTED,    /*!< WiFi disconnected */
-    STATE_WIFI_CONNECTED,       /*!< WiFi connected */
-    STATE_WIFI_MAX,             /*!< Total number of states */
+    STATE_WIFI_IDLE,         /*!< Idle state */
+    STATE_WIFI_SCAN,         /*!< Scanning for SSIDs */
+    STATE_WIFI_START,        /*!< Start WiFi */
+    STATE_WIFI_DISCONNECTED, /*!< WiFi disconnected */
+    STATE_WIFI_CONNECTED,    /*!< WiFi connected */
+    STATE_WIFI_MAX,          /*!< Total number of states */
 } wifiStates_et;
 
 /**
@@ -46,8 +36,8 @@ typedef enum
  */
 typedef struct
 {
-    char ssid[LENGTH_WIFI_CRED_SSID];           /*!< WiFi SSID */
-    char password[LENGTH_WIFI_CRED_PASSWORD];   /*!< WiFi Password */
+    char ssid[LENGTH_WIFI_CRED_SSID];         /*!< WiFi SSID */
+    char password[LENGTH_WIFI_CRED_PASSWORD]; /*!< WiFi Password */
 } wifiCred_st;
 
 /* Function declarations ----------------------------------------------------*/
@@ -85,7 +75,7 @@ int8_t WIFI_getRssi();
 /**
  * @brief Print the WiFi status.
  * @param none
- * @returns none 
+ * @returns none
  */
 void WIFI_printStatus();
 
@@ -107,5 +97,12 @@ const char *WIFI_getStateString();
  * @returns Total number of available APs
  */
 uint16_t WIFI_getApList(char *pBuffer);
+
+/**
+ * @brief Verifies if the SSID is valid and listed in AP Scan list
+ * @param [in] pSsid SSID to be validated
+ * @returns bool True(Found)/False(Not Found)
+ */
+bool WIFI_verifySsid(char *pSsid);
 
 #endif

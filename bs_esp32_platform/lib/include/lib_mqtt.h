@@ -1,4 +1,6 @@
-/** 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_mqtt.h
  * \brief MQTT library header file.
  */
@@ -17,11 +19,11 @@
  */
 typedef enum
 {
-    STATE_MQTT_IDLE,            /*!< Idle state */
-    STATE_MQTT_START,           /*!< Initialize and Start MQTT */
-    STATE_MQTT_DISCONNECTED,    /*!< MQTT is in Disconnected state */
-    STATE_MQTT_CONNECTED,       /*!< MQTT is Connected state */
-    STATE_MQTT_ABORT,           /*!< Abort and close MQTT connection */
+    STATE_MQTT_IDLE,         /*!< Idle state */
+    STATE_MQTT_START,        /*!< Initialize and Start MQTT */
+    STATE_MQTT_DISCONNECTED, /*!< MQTT is in Disconnected state */
+    STATE_MQTT_CONNECTED,    /*!< MQTT is Connected state */
+    STATE_MQTT_ABORT,        /*!< Abort and close MQTT connection */
     STATE_MQTT_MAX,
 } mqttStates_et;
 
@@ -131,7 +133,7 @@ bool MQTT_read(mqttMsg_st *ps_msg);
 /**
  * @brief Print the status of MQTT library.
  * @param none
- * @returns none 
+ * @returns none
  */
 void MQTT_printStatus();
 

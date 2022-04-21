@@ -1,11 +1,6 @@
-/*
- * lib_msg.h
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
  *
- *  Created on: Aug 14, 2021
- *      Author: Saheblal Bagwan
- */
-
-/** 
  * \file lib_msg.h
  * \brief MQTT message header file.
  */
@@ -22,10 +17,10 @@
  */
 typedef enum
 {
-    QOS0_AT_MOST_ONCE = 0,  /*!< At most once */
-    QOS1_AT_LEASET_ONCE,    /*!< At least once */
+    QOS0_AT_MOST_ONCE = 0, /*!< At most once */
+    QOS1_AT_LEASET_ONCE,   /*!< At least once */
     // QOS2_AT_EXACTLY_ONCE   // Exactly once  // not supported
-    QOS_AT_MAX              /*!< Maximum number of supported QOS levels */
+    QOS_AT_MAX /*!< Maximum number of supported QOS levels */
 } qos_et;
 
 /**
@@ -34,11 +29,11 @@ typedef enum
  */
 typedef enum
 {
-    STATUS_IDLE,        /*!< Idle status */
-    STATUS_INPORGESS,   /*!< Download is in progress */
-    STATUS_COMPLETE,    /*!< Download completed */
-    STATUS_FAILED,      /*!< Download failed */
-    PACKET_STATUS_MAX   /*!< Total number of available packet status */
+    STATUS_IDLE,      /*!< Idle status */
+    STATUS_INPORGESS, /*!< Download is in progress */
+    STATUS_COMPLETE,  /*!< Download completed */
+    STATUS_FAILED,    /*!< Download failed */
+    PACKET_STATUS_MAX /*!< Total number of available packet status */
 } packetStatus_et;
 
 /**
@@ -46,12 +41,12 @@ typedef enum
  */
 typedef struct
 {
-    char topicStr[LENGTH_MQTT_TOPIC];       /*<! MQTT topic */
-    char payloadStr[LENGTH_MQTT_PAYLOAD];   /*!< MQTT message payload */
-    uint16_t payloadLen_u16;                /*!< Length of payload */
-    uint8_t topicLen_u8;                    /*!< Length of topic */
-    qos_et qos_e;                           /*!< QOS levels */
-    bool retain_b8;                         /*!< Retain falg */
+    char topicStr[LENGTH_MQTT_TOPIC];     /*<! MQTT topic */
+    char payloadStr[LENGTH_MQTT_PAYLOAD]; /*!< MQTT message payload */
+    uint16_t payloadLen_u16;              /*!< Length of payload */
+    uint8_t topicLen_u8;                  /*!< Length of topic */
+    qos_et qos_e;                         /*!< QOS levels */
+    bool retain_b8;                       /*!< Retain falg */
 } mqttMsg_st;
 
 /**
@@ -60,12 +55,12 @@ typedef struct
  */
 typedef struct
 {
-    uint32_t expectedFileSize_u32;          /*!< Expected filesize */
-    uint32_t receivedFileSize_u32;          /*!< Received filesize */
-    uint16_t dataLen_u16;                   /*!< Length of received packet data */
-    uint16_t packetId_u16;                  /*!< Packet Id */
-    packetStatus_et status_e;               /*!< Status of packet */
-    uint8_t data_a8[LENGTH_HTTP_PACKET];    /*!< Received packet data */
+    uint32_t expectedFileSize_u32;       /*!< Expected filesize */
+    uint32_t receivedFileSize_u32;       /*!< Received filesize */
+    uint16_t dataLen_u16;                /*!< Length of received packet data */
+    uint16_t packetId_u16;               /*!< Packet Id */
+    packetStatus_et status_e;            /*!< Status of packet */
+    uint8_t data_a8[LENGTH_HTTP_PACKET]; /*!< Received packet data */
 } packet_st;
 
 #endif /* LIB_MSG_H_ */

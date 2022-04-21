@@ -1,16 +1,6 @@
-/*******************************************************************************
-* Copyright (c) 2021, Buildstorm Pvt Ltd
-*
-* Filename:     lib_flash.h
-*
-* Author:       Amruta
-* email:        amruta@buildstorm.com
-*
-* Description:
-*               Contains wrapper functions to handle flash read/write functionalities.
-*******************************************************************************/
-
-/** 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_flash.h
  * \brief Flash library header file.
  */
@@ -28,13 +18,13 @@
  */
 typedef enum
 {
-    FLASH_STATUS_OK,                /*!< Status ok */
-    FLASH_STATUS_BUSY,              /*!< Status busy */
-    FLASH_STATUS_LOAD_DEFAULT,      /*!< Load default configuration values */
-    FLASH_STATUS_READ_FAIL,         /*!< Read failed */
-    FLASH_STATUS_WRITE_FAIL,        /*!< Write failed */
-    FLASH_STATUS_INVALID_DATASET,   /*!< Data is invalid */
-    FLASH_STATUS_MAX                /*!< Total number of status for Flash library */
+    FLASH_STATUS_OK,              /*!< Status ok */
+    FLASH_STATUS_BUSY,            /*!< Status busy */
+    FLASH_STATUS_LOAD_DEFAULT,    /*!< Load default configuration values */
+    FLASH_STATUS_READ_FAIL,       /*!< Read failed */
+    FLASH_STATUS_WRITE_FAIL,      /*!< Write failed */
+    FLASH_STATUS_INVALID_DATASET, /*!< Data is invalid */
+    FLASH_STATUS_MAX              /*!< Total number of status for Flash library */
 } flashStatus_t;
 
 /**
@@ -43,9 +33,9 @@ typedef enum
  */
 typedef enum
 {
-    SYSTEM_STATUS_OTA,  /*!< System parameter OTA */
-    SYSTEM_STATUS_ALL,  /*!< System parameter ALL */
-    SYSTEM_STATUS_MAX   /*!< Total number of parameters */
+    SYSTEM_STATUS_OTA, /*!< System parameter OTA */
+    SYSTEM_STATUS_ALL, /*!< System parameter ALL */
+    SYSTEM_STATUS_MAX  /*!< Total number of parameters */
 } systemStatusParams_et;
 
 /**
@@ -54,14 +44,14 @@ typedef enum
  */
 typedef enum
 {
-    DEVICE_CONFIG_HOST,         /*!< AWS IoT Host */
-    DEVICE_CONFIG_PORT,         /*!< AWS IoT Port number */
-    DEVICE_CONFIG_USERNAME,     /*!< MQTT Username */
-    DEVICE_CONFIG_PASSWORD,     /*!< MQTT Password */
-    DEVICE_CONFIG_WIFI,         /*!< WIFI configuration parameter */
-    DEVICE_CONFIG_THING_NAME,   /*!< Thing name parameter */
-    DEVICE_CONFIG_CLEAR,        /*!< Clear configurations */
-    DEVICE_CONFIG_MAX           /*!< Total number of available configuration parameters */
+    DEVICE_CONFIG_HOST,       /*!< AWS IoT Host */
+    DEVICE_CONFIG_PORT,       /*!< AWS IoT Port number */
+    DEVICE_CONFIG_USERNAME,   /*!< MQTT Username */
+    DEVICE_CONFIG_PASSWORD,   /*!< MQTT Password */
+    DEVICE_CONFIG_WIFI,       /*!< WIFI configuration parameter */
+    DEVICE_CONFIG_THING_NAME, /*!< Thing name parameter */
+    DEVICE_CONFIG_CLEAR,      /*!< Clear configurations */
+    DEVICE_CONFIG_MAX         /*!< Total number of available configuration parameters */
 } deviceConfigParams_et;
 
 /**
@@ -81,11 +71,11 @@ typedef enum
  */
 typedef enum
 {
-    FLASH_DATASET_DEVICE_CONFIG,        /*!< Device configuration dataset */
-    FLASH_DATASET_SYSTEM_STATUS,        /*!< System status dataset */
-    FLASH_DATASET_DEVICE_CERTIFICATES,  /*!< Device certificate dataset */
-    FLASH_DATASET_APP,                  /*!< Application dataset */
-    FLASH_DATASET_MAX,                  /*!< Total number of available datasets */
+    FLASH_DATASET_DEVICE_CONFIG,       /*!< Device configuration dataset */
+    FLASH_DATASET_SYSTEM_STATUS,       /*!< System status dataset */
+    FLASH_DATASET_DEVICE_CERTIFICATES, /*!< Device certificate dataset */
+    FLASH_DATASET_APP,                 /*!< Application dataset */
+    FLASH_DATASET_MAX,                 /*!< Total number of available datasets */
 } flashDataSet_et;
 
 /* Function declarations ----------------------------------------------------*/

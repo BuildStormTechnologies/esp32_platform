@@ -1,16 +1,6 @@
-/*******************************************************************************
-* Copyright (c) 2021, Buildstorm Pvt Ltd
-*
-* Filename:     lib_config.h
-*
-* Author:       Amruta
-* email:        amruta@buildstorm.com
-*
-* Description:
-*               Contains macros for the application
-*******************************************************************************/
-
-/** 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_config.h
  * \brief Configuration header file.
  */
@@ -20,8 +10,6 @@
 
 #include "esp_types.h"
 #include "lib_utils.h"
-
-#define LIB_VERSION "1.1.0"
 
 //---------------------------Debug CONFIG---------------------------/
 
@@ -45,7 +33,7 @@ typedef enum
         'n', 'e', '0', 'i', 'd' \
     }
 #define GLOBAL_LOG_LEVEL PRINT_LEVEL_ERROR
-#define LOG_PASS_CODE_STR "[12345678]" // TODO: expose to user ????
+#define STR_LOG_PASS_CODE "[12345678]" // TODO: expose to user ????
 
 /**
  * @enum menusLibModule_et
@@ -71,8 +59,8 @@ typedef enum
 } menusLibModule_et;
 
 //---------------------------WIFI CONFIG------------------------------/
-#define TIME_WIFI_NEXT_SCAN 2000 // in milli seconds
-#define TIME_WIFI_SCAN_END 4000  // in milli seconds
+#define TIME_WIFI_NEXT_SCAN 500 // in milli seconds
+#define TIME_WIFI_SCAN_END 5000 // in milli seconds
 
 #define TIMEOUT_WIFI_RECONNECT 10000 // in milli seconds
 #define TIMEOUT_WIFI_RESTART 30000   // in milli seconds
@@ -95,7 +83,7 @@ typedef enum
 #define HTTP_RING_BUFFER_SIZE 4
 
 //--------------------------MQTT CONFIG--------------------------------/
-#define MQTT_TOPIC_OTA_STR "topicOTA/ESP32"
+#define STR_MQTT_TOPIC_OTA "topicOTA/ESP32"
 
 #define LENGTH_MQTT_TOPIC 100
 #define LENGTH_MQTT_PAYLOAD 1024

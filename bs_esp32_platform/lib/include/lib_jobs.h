@@ -1,11 +1,6 @@
-/*
- * lib_jobs.h
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
  *
- *  Created on: 27 Apr 2021
- *      Author: Saheblal Bagwan
- */
-
-/** 
  * \file lib_jobs.h
  * \brief AWS Jobs library header file.
  */
@@ -37,10 +32,10 @@ typedef enum
  */
 typedef struct
 {
-    uint32_t queuedAt_u32;                  /*!< Timestamp when job was queued */
-    uint32_t currentTimeStamp_u32;          /*!< Current timestamp */
-    char idStr[LENGTH_JOB_ID];              /*!< Job Id */
-    char documentStr[LENGTH_JOB_DOCUMENT];  /*!< Job document */
+    uint32_t queuedAt_u32;                 /*!< Timestamp when job was queued */
+    uint32_t currentTimeStamp_u32;         /*!< Current timestamp */
+    char idStr[LENGTH_JOB_ID];             /*!< Job Id */
+    char documentStr[LENGTH_JOB_DOCUMENT]; /*!< Job document */
 } job_st;
 
 /**

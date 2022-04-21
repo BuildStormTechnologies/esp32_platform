@@ -1,14 +1,6 @@
-/*******************************************************************************
-* Filename:     lib_ringbuffer.h
-*
-* Author:       Saheblal Bagwan
-* email:        bagwan@buildstorm.com
-*
-* Description:
-*               Contains wrapper functions to implement ring-buffer.
-*******************************************************************************/
-
-/** 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
  * \file lib_ringBuffer.h
  * \brief Rig buffer library header file.
  */
@@ -67,7 +59,7 @@ uint16_t RB_available(rb_st *ps_rb);
 /**
  * @brief Check if ring buffer is not full
  * @param [in] ps_rb Instance of ring buffer
- * @returns Number of bytes that are remaining in ring buffer 
+ * @returns Number of bytes that are remaining in ring buffer
  */
 uint16_t RB_hasSpace(rb_st *ps_rb);
 

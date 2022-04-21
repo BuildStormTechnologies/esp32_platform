@@ -1,11 +1,6 @@
-/*
- * lib_delay.h
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
  *
- *  Created on: Jun 10, 2021
- *      Author: Saheblal Bagwan
- */
-
-/** 
  * \file lib_delay.h
  * \brief Header file for delay.
  */

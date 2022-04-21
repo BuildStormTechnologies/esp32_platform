@@ -1,6 +1,9 @@
-/** \file lib_aws.h
- *  \brief An AWS library file
- * 
+/**
+ * \copyright Copyright (c) 2021, Buildstorm Pvt Ltd
+ *
+ * \file lib_aws.h
+ * \brief An AWS library file
+ *
  *  AWS library handles AWS IoT events like Publish, Subscribe,
  *  Shadow updates, Connection events, Device Provisioning... etc.
  */
@@ -14,8 +17,8 @@
 
 /**
  * @enum awsIotStates_et
- * An enum that represents states of AWS library. The AWS library will
- * be in one of the following mode.
+ * An enum that represents states of AWS module.
+ * It will be in one of the following modes.
  */
 typedef enum
 {
@@ -25,8 +28,8 @@ typedef enum
     STATE_AWS_PROVISIONING,     /*!< AWS device provisioning in progress */
     STATE_AWS_CONNECTED,        /*!< Device is connected to AWS */
     STATE_AWS_DISCONNECTED,     /*!< Device is disconnected from AWS */
-    STATE_AWS_SUSPENDED,        /*!< AWS library is suspended state */
-    STATE_AWS_RESUME,           /*!< Resumes AWS library from suspended state */
+    STATE_AWS_SUSPENDED,        /*!< AWS module is in suspended state */
+    STATE_AWS_RESUME,           /*!< Resumes AWS module from suspended state */
     STATE_AWS_PROVISION_FAILED, /*!< AWS device provisioning has failed */
     STATE_AWS_MAX               /*!< Total number of AWS states */
 } awsIotStates_et;
@@ -37,10 +40,10 @@ typedef enum
  */
 typedef enum
 {
-    SHADOW_VALUE_TYPE_INT,      /*!< Shadow value type as integer */
-    SHADOW_VALUE_TYPE_UINT,     /*!< Shadow value type as unsigned integer */
-    SHADOW_VALUE_TYPE_STRING,   /*!< Shadow value type as string */
-    SHADOW_VALUE_TYPE_MAX,      /*!< Total number of shadow value types */
+    SHADOW_VALUE_TYPE_INT,    /*!< Shadow value type as integer */
+    SHADOW_VALUE_TYPE_UINT,   /*!< Shadow value type as unsigned integer */
+    SHADOW_VALUE_TYPE_STRING, /*!< Shadow value type as string */
+    SHADOW_VALUE_TYPE_MAX,    /*!< Total number of shadow value types */
 } shadowValueType_et;
 
 /**
@@ -49,11 +52,11 @@ typedef enum
  */
 typedef enum
 {
-    SHADOW_UPDATE_TYPE_DESIRED,     /*!< Update Desired state */
-    SHADOW_UPDATE_TYPE_REPORTED,    /*!< Update Reported state */
-    SHADOW_UPDATE_TYPE_ALL,         /*!< Update both Desired & Reported 
+    SHADOW_UPDATE_TYPE_DESIRED,  /*!< Update Desired state */
+    SHADOW_UPDATE_TYPE_REPORTED, /*!< Update Reported state */
+    SHADOW_UPDATE_TYPE_ALL,      /*!< Update both Desired & Reported
                                     states */
-    SHADOW_UPDATE_TYPE_MAX,         /*!< Total number for update types */
+    SHADOW_UPDATE_TYPE_MAX,      /*!< Total number for update types */
 } shadowUpdateType_et;
 
 /**
@@ -69,16 +72,21 @@ typedef union
 
 /**
  * @brief Shadow update callback function type. The application should
- * define the callback function and intialize it in the @ref awsShadow_st 
+ * define the callback function and intialize it in the @ref awsShadow_st
  * configuration.
  */
 typedef void (*awsShadowUpdateCallBack_t)(char *pKeyStr, void *pValue);
 
+/**
+ * @brief AWS Shadow structure used by the library to update classic shadow.
+ * This will update the shadow for one element without needing to register
+ * No callbacks will be sent represent only one shadow element within a thing shadow.
+ */
 typedef struct
 {
-    char keyStr[LENGTH_AWS_SHADOW_KEY];
-    value_ut value_e;
-    shadowValueType_et valType_e;
+    char keyStr[LENGTH_AWS_SHADOW_KEY]; /*!< A key of the shadow element */
+    value_ut value_e;                   /*!< A value of the shadow element */
+    shadowValueType_et valType_e;       /*!< A type of value required for this shadow element */
 } awsThingShadow_st;
 
 /**
@@ -86,16 +94,16 @@ typedef struct
  * You should initialize the callback handler and register this awsShadow_st
  * by calling @ref AWS_shadowDeltaRegister function to receive callbacks
  * whenever the shadow element is updated.
- * 
+ *
  * This structure represent only one shadow element within a thing shadow.
  */
 typedef struct
 {
-    shadowValueType_et valType_e;               /*!< A type of value required for this shadow element */
-    awsShadowUpdateCallBack_t callBackHandler;  /*!< Callback handler to be called when shadow element is updated */
-    char keyStr[LENGTH_AWS_SHADOW_KEY];         /*!< A key of the shadow element */
-    value_ut value_e;                           /*!< A value of the shadow element */
-    uint8_t isUpdated_b8;                       /*!< Flag to indicate update */
+    shadowValueType_et valType_e;              /*!< A type of value required for this shadow element */
+    awsShadowUpdateCallBack_t callBackHandler; /*!< Callback handler to be called when shadow element is updated */
+    char keyStr[LENGTH_AWS_SHADOW_KEY];        /*!< A key of the shadow element */
+    value_ut value_e;                          /*!< A value of the shadow element */
+    uint8_t isUpdated_b8;                      /*!< Flag to indicate update */
 } awsShadow_st;
 
 /**
@@ -103,19 +111,19 @@ typedef struct
  */
 typedef struct
 {
-    char hostNameStr[LENGTH_HTTP_URL];  /*!< AWS IoT Endpoint */
-    uint16_t port_u16;                  /*!< AWS IoT port number */
-    char *pRootCaStr;                   /*!< Root CA certificate string */
-    char *pThingCertStr;                /*!< Thing ceritificate string */
-    char *pThingPrivateKeyStr;          /*!< Thing Private key string */
-    char *pClaimCertStr;                /*!< Claim certificate string */
-    char *pClaimPrivateKeyStr;          /*!< Claim Private key string */
-    char *pClaimTemplateStr;            /*!< Provisioning template name */
-    const char *pThingNameStr;          /*!< AWS IoT thing name */
+    char hostNameStr[LENGTH_HTTP_URL]; /*!< AWS IoT Endpoint */
+    uint16_t port_u16;                 /*!< AWS IoT port number */
+    char *pRootCaStr;                  /*!< Root CA certificate string */
+    char *pThingCertStr;               /*!< Thing ceritificate string */
+    char *pThingPrivateKeyStr;         /*!< Thing Private key string */
+    char *pClaimCertStr;               /*!< Claim certificate string */
+    char *pClaimPrivateKeyStr;         /*!< Claim Private key string */
+    char *pClaimTemplateStr;           /*!< Provisioning template name */
+    const char *pThingNameStr;         /*!< AWS IoT thing name */
 } awsConfig_st;
 
 /**
- * @brief Check if the device is connected state.
+ * @brief Check if the device is in connected state.
  * @param none
  * @returns AWS connection status
  * @retval true when connected
@@ -124,14 +132,14 @@ typedef struct
 bool AWS_isConnected();
 
 /**
- * @brief Get the current state of AWS library.
+ * @brief Get the current state of AWS module.
  * @param none
- * @returns Current state of AWS library @ref awsIotStates_et
+ * @returns Current state of AWS module @ref awsIotStates_et
  */
 awsIotStates_et AWS_getState();
 
 /**
- * @brief Get current state of AWS library as string.
+ * @brief Get current state of AWS module as string.
  * @param none
  * @returns String version of AWS states.
  * @retval "IDLE" - for STATE_AWS_IDLE
@@ -154,14 +162,14 @@ const char *AWS_getStateString();
 const char *AWS_getThingName();
 
 /**
- * @brief Suspend AWS library.
+ * @brief Suspend AWS module.
  * @param none
  * @returns none
  */
 void AWS_suspend();
 
 /**
- * @brief Resume AWS library from suspended state.
+ * @brief Resume AWS module from suspended state.
  * @param none
  * @returns none
  */
@@ -175,7 +183,7 @@ void AWS_resume();
 void AWS_close();
 
 /**
- * @brief Disconnect from AWS IoT and Reconnect back.
+ * @brief Close the AWS connection and Start new connection.
  * @param none
  * @returns none
  */
@@ -192,16 +200,15 @@ void AWS_restart();
 bool AWS_subscribe(char *pTopicStr, uint8_t qos_e);
 
 /**
- * @brief Check if messages received for subscribed topics are
- * available in the subscription message buffer.
+ * @brief Get number messages available in the subscription message buffer
  * @param none
- * @returns Number of bytes available.
+ * @returns Number of messages available.
  */
 uint16_t AWS_subMsgAvailable();
 
 /**
  * @brief Read the available message from the subscription message buffer.
- * @param [out] mqttMsg_st MQTT message type
+ * @param [out] mqttMsg_st MQTT message buffer to return a message
  * @returns Message read status
  * @retval true when message is read successfully from the buffer.
  * @retval false on errors
@@ -211,7 +218,7 @@ bool AWS_subMsgRead(mqttMsg_st *ps_msg);
 /**
  * @brief Publish given message to AWS IoT. The message is queued in a Publish
  * buffer, then gets published.
- * @param [in] mqttMsg_st MQTT message type for publishing
+ * @param [in] mqttMsg_st MQTT message for publishing
  * @returns Publish status
  * @retval true when message is queued for publishing
  * @retval false on errors
@@ -219,11 +226,9 @@ bool AWS_subMsgRead(mqttMsg_st *ps_msg);
 bool AWS_publish(mqttMsg_st *ps_msg);
 
 /**
- * @brief Check if message is available to publish in the Publish queue.
+ * @brief  Get number messages available to publish in the Publish queue.
  * @param none
- * @returns Status to indiciate if message available for publishing
- * @retval true if message is available for publishing
- * @retval false if no message is available
+ * @returns  Number messages available for publishing
  */
 uint16_t AWS_pubMsgAvailable();
 
@@ -239,9 +244,9 @@ bool AWS_publishInProgress();
 /**
  * @brief Register a shadow element to receive callbacks whenever the shadow
  * element is updated with a new value.
- * @param [in] awsShadow_st shadow element to receive callback on update
- * @returns Status to indicate if callback is registered
- * @retval true registed successfully
+ * @param [in] awsShadow_st Pointer to shadow element configuration
+ * @returns Status to indicate if the shadow element is registered
+ * @retval true registered successfully
  * @retval false when failed
  */
 bool AWS_shadowDeltaRegister(awsShadow_st *ps_shadow);
@@ -283,8 +288,8 @@ void AWS_printStatus();
 void AWS_printSubscribedTopics();
 
 /**
- * @brief Print the configured certificates. Prints ROOT CA,
- * Client Cert. & Private key.
+ * @brief Print the configured certificates.
+ * Prints ROOT CA, Client Cert. & Private key.
  * @param none
  * @returns none
  */
