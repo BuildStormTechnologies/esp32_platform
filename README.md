@@ -7,8 +7,8 @@
 
 ## Requirements
 
-1. This library uses esp-idf v4.3.2
-2. [Download](https://dl.espressif.com/dl/esp-idf-tools-setup-online-2.9.exe?) and install the ESP-IDF tools installer for windows, or you may follow the official instructions [here](https://docs.espressif.com/projects/esp-idf/en/v4.3.1/get-started-cmake/index.html#setting-up-development-environment) for other OS.
+1. This library uses esp-idf v4.4.1
+2. [Download](https://dl.espressif.com/dl/esp-idf/) and install the ESP-IDF tools installer for windows, or you may follow the official instructions [here](https://docs.espressif.com/projects/esp-idf/en/v4.4.1/get-started-cmake/index.html#setting-up-development-environment) for other OS.
 3. Python 2.7.10 or later should have been installed by the ESP-IDF Tools installer, if not install it
 
 ---
@@ -35,7 +35,7 @@
 
 ## Building the project
 
-1. Open the `ESP-IDF 4.3.1 CMD` command prompt
+1. Open the `ESP-IDF 4.4.1 CMD` command prompt
 2. Navigate to `..\<example>` folder
 3. Build Command
     ```sh
